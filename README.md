@@ -4,8 +4,6 @@ A small Salesforce app that turns the products of an **Opportunity** into a cust
 
 Built by **Serafima Kogan** ([@SimaKogan](https://github.com/SimaKogan), serafima.kogan@gmail.com).
 
-> Written from scratch with its own data model, Apex and Lightning Web Components. The idea (opportunity products → cart → receipt) was inspired by a public Salesforce training project by Neriya Zudi; no code is shared.
-
 ## Screenshots
 
 > These are **UI previews rendered locally from a static mock with sample data** (same layout, same numbers as `scripts/apex/seed-demo-data.apex`), not captures of a live org. Replace them with real captures after your first deploy; the file names can stay the same.
@@ -26,6 +24,13 @@ Built by **Serafima Kogan** ([@SimaKogan](https://github.com/SimaKogan), serafim
 4. The purchase becomes `Submitted`, the date is stamped, and a plain-text receipt is emailed.
 
 Opportunity products are never modified. Stock is tracked by *reserving* quantities on purchase lines, so cancelling a purchase releases its units again.
+
+## Built with
+
+- **Apex**: Java-style, strongly typed server code (service layer, bulk-safe trigger, tests)
+- **JavaScript**: Lightning Web Components (ES modules, async/await, custom events)
+- **Node.js tooling**: Jest, ESLint and Prettier for the front-end code
+- **Salesforce DX**: source-format project, scratch org, `sf` CLI
 
 ## Data model
 
