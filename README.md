@@ -4,6 +4,8 @@ A small Salesforce app that turns the products of an **Opportunity** into a cust
 
 Built by **Serafima Kogan** ([@SimaKogan](https://github.com/SimaKogan), serafima.kogan@gmail.com).
 
+![Order Desk: the cart with opportunity products](docs/order-desk-overview.png)
+
 ## Screenshots
 
 > These are **UI previews rendered locally from a static mock with sample data** (same layout, same numbers as `scripts/apex/seed-demo-data.apex`), not captures of a live org. Replace them with real captures after your first deploy; the file names can stay the same.
