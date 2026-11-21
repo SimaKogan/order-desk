@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Build carts from opportunity products and send purchase receipts.</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Order Desk</label>
+    <navType>Standard</navType>
+    <tabs>Order_Desk</tabs>
+    <tabs>Purchase__c</tabs>
+    <tabs>standard-Opportunity</tabs>
+    <tabs>standard-Account</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

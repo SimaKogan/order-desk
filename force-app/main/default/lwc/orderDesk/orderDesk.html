@@ -1,0 +1,111 @@
+<template>
+  <div class="desk">
+    <header class="desk__header">
+      <div class="desk__brand">
+        <lightning-icon
+          icon-name="standard:orders"
+          size="medium"
+          alternative-text="Order Desk"
+        ></lightning-icon>
+        <div>
+          <h1 class="desk__title">Order Desk</h1>
+          <p class="desk__subtitle">
+            Pick products from an opportunity, collect them in a cart and send the receipt.
+          </p>
+        </div>
+      </div>
+      <lightning-combobox
+        lwc:if={showPicker}
+        class="desk__picker"
+        name="opportunity"
+        label="Opportunity"
+        variant="label-hidden"
+        placeholder="Select an opportunity"
+        options={opportunityOptions}
+        value={selectedId}
+        disabled={isBusy}
+        onchange={handleOpportunityChange}
+      ></lightning-combobox>
+    </header>
+
+    <div class="banner banner_error" role="alert" lwc:if={errorMessage}>
+      <lightning-icon
+        icon-name="utility:error"
+        size="x-small"
+        variant="error"
+        alternative-text="Error"
+      ></lightning-icon>
+      <span>{errorMessage}</span>
+    </div>
+
+    <div class="banner banner_success" role="status" lwc:if={confirmation}>
+      <lightning-icon
+        icon-name="utility:success"
+        size="x-small"
+        variant="success"
+        alternative-text="Success"
+      ></lightning-icon>
+      <span>{confirmation}</span>
+      <lightning-button-icon
+        class="banner__close"
+        icon-name="utility:close"
+        variant="bare"
+        alternative-text="Dismiss"
+        onclick={handleDismissConfirmation}
+      ></lightning-button-icon>
+    </div>
+
+    <div class="desk__loading" lwc:if={isLoading}>
+      <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </div>
+
+    <template lwc:if={hasDesk}>
+      <div class="stats">
+        <div class="stat">
+          <span class="stat__label">Account</span>
+          <span class="stat__value">{desk.accountName}</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Opportunity</span>
+          <span class="stat__value">{desk.opportunityName}</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Cart total</span>
+          <span class="stat__value">
+            <lightning-formatted-number
+              value={cartTotal}
+              format-style="currency"
+            ></lightning-formatted-number>
+          </span>
+        </div>
+      </div>
+      <div class="columns">
+        <c-order-line-list
+          class="columns__main"
+          products={desk.products}
+          disabled={isBusy}
+          onaddtocart={handleAddToCart}
+        ></c-order-line-list>
+        <c-cart-panel
+          class="columns__side"
+          cart={desk.cart}
+          disabled={isBusy}
+          onremoveline={handleRemoveLine}
+          oncheckout={handleCheckout}
+        ></c-cart-panel>
+      </div>
+    </template>
+    <template lwc:elseif={showNoOpportunities}>
+      <c-empty-state
+        heading="No opportunities to work with"
+        message="Open opportunities that have an account and at least one product show up here."
+      ></c-empty-state>
+    </template>
+    <template lwc:elseif={showPrompt}>
+      <c-empty-state
+        heading="Select an opportunity"
+        message="Choose one above to see its products and start a cart."
+      ></c-empty-state>
+    </template>
+  </div>
+</template>

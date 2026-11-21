@@ -1,0 +1,10 @@
+{
+  "singleQuote": true,
+  "trailingComma": "none",
+  "tabWidth": 4,
+  "overrides": [
+    { "files": "**/*.{cls,trigger}", "options": { "parser": "apex" } },
+    { "files": "**/*.{html,xml}", "options": { "tabWidth": 2 } },
+    { "files": "**/lwc/**/*.html", "options": { "parser": "lwc" } }
+  ]
+}

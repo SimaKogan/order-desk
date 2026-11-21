@@ -1,0 +1,76 @@
+<template>
+  <section class="panel" aria-label="Cart">
+    <header class="panel__header">
+      <h2 class="panel__title">Cart</h2>
+      <span class="panel__count">{lines.length}</span>
+    </header>
+
+    <template lwc:if={hasLines}>
+      <ul class="lines">
+        <template for:each={lines} for:item="line">
+          <li key={line.id} class="line">
+            <div class="line__info">
+              <p class="line__name">{line.productName}</p>
+              <p class="line__meta">
+                {line.quantity} &times;
+                <lightning-formatted-number
+                  value={line.unitPrice}
+                  format-style="currency"
+                ></lightning-formatted-number>
+              </p>
+            </div>
+            <div class="line__total">
+              <lightning-formatted-number
+                value={line.lineTotal}
+                format-style="currency"
+              ></lightning-formatted-number>
+              <lightning-button-icon
+                class="line__remove"
+                icon-name="utility:delete"
+                variant="bare"
+                alternative-text={line.removeLabel}
+                title={line.removeLabel}
+                data-id={line.id}
+                disabled={disabled}
+                onclick={handleRemove}
+              ></lightning-button-icon>
+            </div>
+          </li>
+        </template>
+      </ul>
+
+      <div class="checkout">
+        <p class="checkout__total">
+          <span>Total</span>
+          <lightning-formatted-number
+            value={cart.total}
+            format-style="currency"
+          ></lightning-formatted-number>
+        </p>
+        <lightning-input
+          type="email"
+          label="Send the receipt to"
+          placeholder="name@company.com"
+          value={email}
+          disabled={disabled}
+          onchange={handleEmailChange}
+        ></lightning-input>
+        <p class="checkout__hint" lwc:if={showEmailHint}>Enter a valid email address.</p>
+        <lightning-button
+          class="checkout__button"
+          variant="brand"
+          label="Submit purchase"
+          icon-name="utility:email"
+          disabled={isCheckoutDisabled}
+          onclick={handleCheckout}
+        ></lightning-button>
+      </div>
+    </template>
+    <template lwc:else>
+      <c-empty-state
+        heading="Your cart is empty"
+        message="Enter a quantity next to a product and choose Add to cart."
+      ></c-empty-state>
+    </template>
+  </section>
+</template>

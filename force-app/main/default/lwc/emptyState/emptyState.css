@@ -1,0 +1,45 @@
+:host {
+    display: block;
+}
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.empty__art {
+    width: 4.5rem;
+    height: 4.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.empty__box {
+    fill: #eaf5fe;
+    stroke: #0176d3;
+    stroke-width: 2;
+}
+
+.empty__line {
+    fill: none;
+    stroke: #0176d3;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.empty__heading {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #181818;
+}
+
+.empty__message {
+    margin: 0.25rem 0 0;
+    max-width: 22rem;
+    font-size: 0.8125rem;
+    color: #5c5c5c;
+}

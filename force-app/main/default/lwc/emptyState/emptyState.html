@@ -1,0 +1,12 @@
+<template>
+  <div class="empty" role="status">
+    <svg class="empty__art" viewBox="0 0 64 64" aria-hidden="true">
+      <rect class="empty__box" x="10" y="24" width="44" height="28" rx="4"></rect>
+      <path class="empty__line" d="M10 32h44"></path>
+      <path class="empty__line" d="M22 24l4-11h12l4 11"></path>
+      <path class="empty__line" d="M27 41h10"></path>
+    </svg>
+    <p class="empty__heading">{heading}</p>
+    <p class="empty__message" lwc:if={message}>{message}</p>
+  </div>
+</template>

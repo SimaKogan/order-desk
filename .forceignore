@@ -1,0 +1,6 @@
+# Metadata that should never be deployed
+package.xml
+**/jsconfig.json
+**/.eslintrc.json
+**/__tests__/**
+**/tsconfig.json

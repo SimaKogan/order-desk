@@ -1,0 +1,127 @@
+:host {
+    display: block;
+    padding: 1rem;
+    background: #f3f3f3;
+}
+
+.desk {
+    position: relative;
+    max-width: 72rem;
+    margin: 0 auto;
+}
+
+.desk__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem 1.25rem;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 2px rgba(24, 24, 24, 0.06);
+}
+
+.desk__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.desk__title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #181818;
+}
+
+.desk__subtitle {
+    margin: 0.125rem 0 0;
+    font-size: 0.8125rem;
+    color: #5c5c5c;
+}
+
+.desk__picker {
+    flex: 0 1 22rem;
+    min-width: 14rem;
+}
+
+.desk__loading {
+    position: relative;
+    min-height: 4rem;
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.banner_error {
+    background: #fef1ee;
+    border: 1px solid #ea001e;
+    color: #5c0b13;
+}
+
+.banner_success {
+    background: #ebf7e6;
+    border: 1px solid #2e844a;
+    color: #0d4a1f;
+}
+
+.banner__close {
+    margin-left: auto;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 1rem;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.75rem;
+}
+
+.stat__label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #5c5c5c;
+}
+
+.stat__value {
+    margin-top: 0.125rem;
+    overflow: hidden;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #181818;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: 1rem;
+    align-items: start;
+}
+
+@media (max-width: 52rem) {
+    .columns {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

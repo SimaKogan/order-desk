@@ -1,0 +1,70 @@
+<template>
+  <section class="panel" aria-label="Opportunity products">
+    <header class="panel__header">
+      <h2 class="panel__title">Opportunity products</h2>
+      <span class="panel__count">{products.length}</span>
+    </header>
+
+    <template lwc:if={hasProducts}>
+      <ul class="rows">
+        <template for:each={rows} for:item="row">
+          <li key={row.id} class={row.className}>
+            <div class="row__info">
+              <p class="row__name">{row.name}</p>
+              <p class="row__meta">
+                <lightning-formatted-number
+                  value={row.unitPrice}
+                  format-style="currency"
+                ></lightning-formatted-number>
+                <span class="row__dot" aria-hidden="true">&middot;</span>
+                <span>{row.available} of {row.quantity} left</span>
+              </p>
+            </div>
+            <div class="row__action">
+              <template lwc:if={row.isSoldOut}>
+                <span class="pill">All in cart</span>
+              </template>
+              <template lwc:else>
+                <lightning-input
+                  class="row__input"
+                  type="number"
+                  variant="label-hidden"
+                  label={row.inputLabel}
+                  min="0"
+                  max={row.available}
+                  step="1"
+                  value={row.inputValue}
+                  data-id={row.id}
+                  disabled={disabled}
+                  onchange={handleQuantityChange}
+                ></lightning-input>
+              </template>
+            </div>
+          </li>
+        </template>
+      </ul>
+      <footer class="panel__footer">
+        <p class="panel__summary">
+          <span class="panel__units">{selectedUnits} unit(s) selected</span>
+          <lightning-formatted-number
+            value={subtotal}
+            format-style="currency"
+          ></lightning-formatted-number>
+        </p>
+        <lightning-button
+          variant="brand"
+          label="Add to cart"
+          icon-name="utility:add"
+          disabled={isAddDisabled}
+          onclick={handleAdd}
+        ></lightning-button>
+      </footer>
+    </template>
+    <template lwc:else>
+      <c-empty-state
+        heading="No products yet"
+        message="Add products to the opportunity and they will show up here."
+      ></c-empty-state>
+    </template>
+  </section>
+</template>
